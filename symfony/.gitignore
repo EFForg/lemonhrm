@@ -35,3 +35,6 @@ ache and logs (Symfony2)
 
 # Composer PHAR
 /composer.phar
+
+# Log directory
+/log/*
