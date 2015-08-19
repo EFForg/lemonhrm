@@ -30,29 +30,29 @@
 <div id="addCandidate" class="box">
 
         <div class="head"><h1 id="addCandidateHeading"><?php echo __("Apply for") . " " . $name; ?></h1></div>
-        
+
         <?php include_component('core', 'ohrmPluginPannel', array('location' => 'add_layout_after_main_heading_1')) ?>
-        
+
         <div class="inner">
-            
+
         <?php include_partial('global/flash_messages', array('prefix' => 'applyVacancy')); ?>
-        
+
         <form name="frmAddCandidate" id="frmAddCandidate" method="post" enctype="multipart/form-data">
 
             <fieldset>
-                
+
             <?php echo $form['_csrf_token']; ?>
             <?php echo $form["vacancyList"]->render(); ?>
 
             <ol>
-                
+
                 <li>
                     <label><?php echo __('Description'); ?> <span  id="extend">[+]</span></label>
                     <div id="txtArea" style="width:100%;margin-left: 150px">
                         <?php echo $description ?>
                     </div>
                 </li>
-                
+
                 <li class="line nameContainer">
 
                     <label class="hasTopFieldHelp"><?php echo __('Full Name'); ?></label>
@@ -69,68 +69,63 @@
                             <div class="fieldDescription"><em>*</em> <?php echo __('Last Name'); ?></div>
                             <?php echo $form['lastName']->render(array("class" => "formInputText", "maxlength" => 35)); ?>
                         </li>
-                    </ol>                        
+                    </ol>
 
-                </li>                
-                
+                </li>
+
             <?php include_component('core', 'ohrmPluginPannel', array('location' => 'add_layout_after_main_heading_2')) ?>
-            
+
             <li>
                 <?php echo $form['email']->renderLabel(__('Email'). ' <span class="required">*</span>'); ?>
                 <?php echo $form['email']->render(array("class" => "formInputText")); ?>
             </li>
-            
+
             <li>
                 <?php echo $form['contactNo']->renderLabel(__('Contact No'), array("class " => "contactNoLable")); ?>
                 <?php echo $form['contactNo']->render(array("class" => "contactNo")); ?>
             </li>
-            
+
         </ol>
-        <ol>    
-            
+        <ol>
+
             <li class="fieldHelpContainer">
             <?php if ($candidateId == "") : ?>
-            
+
                 <?php echo $form['resume']->renderLabel(__('Resume') . ' <span class="required">*</span>'); ?>
                 <?php echo $form['resume']->render(array("class " => "duplexBox")); ?>
                 <?php echo "<label class=\"fieldHelpBottom\">" . __(CommonMessages::FILE_LABEL_DOC) . "</label>"; ?>
-            
+
             <?php else : ?>
-                
+
                 <?php echo $form['resume']->renderLabel(__('Resume')); ?>
                 <?php echo "<span class=\"fileLink\">".__('Uploaded')."</span>"; ?>
-            
+
             <?php endif; ?>
             </li>
-            
+
             <li>
-                <?php echo $form['keyWords']->renderLabel(__('Keywords'), array("class " => "keywrd")); ?>
-                <?php echo $form['keyWords']->render(array("class" => "keyWords")); ?>
-            </li>
-            
-            <li>
-                <?php echo $form['comment']->renderLabel(__('Notes'), array("class " => "comment")); ?>
+                <?php echo $form['comment']->renderLabel(__('Cover letter'), array("class " => "comment")); ?>
                 <?php echo $form['comment']->render(array("class" => "formInputText","id" => "notes", "cols" => 43, "rows" => 4)); ?>
             </li>
-            
+
             <?php include_component('core', 'ohrmPluginPannel', array('location' => 'add_layout_after_main_heading_3')) ?>
-            
+
             <li class="required new">
                 <em>*</em> <?php echo __(CommonMessages::REQUIRED_FIELD); ?>
             </li>
-            
+
             </ol>
-            
+
             <p>
                 <input type="button" class="savebutton" name="btnSave" id="btnSave" value="<?php echo __("Submit"); ?>" /> <a id="backLink" href="<?php echo url_for('recruitmentApply/jobs') ?>"><?php echo __("Back to Job List"); ?></a>
             </p>
-            
+
             </fieldset>
 
         </form>
-        
+
         </div> <!-- inner -->
-        
+
     </div>
     <div id="footer">
         <?php include_partial('global/copyright');?>
@@ -152,5 +147,5 @@
     var linkForApplyVacancy = "<?php echo url_for('recruitmentApply/applyVacancy'); ?>";
     var linkForViewJobs = "<?php echo url_for('recruitmentApply/viewJobs'); ?>";
     var lang_back = "<?php echo __("Go to Job Page")?>";
-	
+
 </script>
