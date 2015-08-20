@@ -102,7 +102,7 @@ class AddCandidateForm extends BaseForm {
         $this->allowedVacancyList = $this->getOption('allowedVacancyList');
         $this->empNumber = $this->getOption('empNumber');
                 $this->isAdmin = $this->getOption('isAdmin');
-                
+
         $this->candidatePermissions = $this->getOption('candidatePermissions');
         $attachmentList = $this->attachment;
         if (count($attachmentList) > 0) {
@@ -136,6 +136,7 @@ class AddCandidateForm extends BaseForm {
                         'file_src' => '')),
             'keyWords' => new sfWidgetFormInputText(),
             'comment' => new sfWidgetFormTextArea(),
+            'notes' => new sfWidgetFormTextArea(),
             'appliedDate' => new ohrmWidgetDatePicker(array(), array('id' => 'addCandidate_appliedDate')),
             'vacancy' => new sfWidgetFormSelect(array('choices' => $vacancyList)),
             'resumeUpdate' => new sfWidgetFormChoice(array('expanded' => true, 'choices' => $resumeUpdateChoices)),
@@ -153,22 +154,23 @@ class AddCandidateForm extends BaseForm {
                 'validated_file_class' => 'orangehrmValidatedFile')),
             'keyWords' => new sfValidatorString(array('required' => false, 'max_length' => 255)),
             'comment' => new sfValidatorString(array('required' => false)),
+            'notes' => new sfValidatorString(array('required' => false)),
             'appliedDate' => new ohrmDateValidator(array('date_format' => $inputDatePattern, 'required' => false),
                     array('invalid' => 'Date format should be ' . $inputDatePattern)),
             'vacancy' => new sfValidatorString(array('required' => false)),
             'resumeUpdate' => new sfValidatorString(array('required' => false)),
         );
-        
-            
+
+
         if(!($this->candidatePermissions->canCreate() && empty($this->candidateId)) || ($this->candidatePermissions->canUpdate() && $this->candidateId > 0)){
             foreach ($widgets as $widget){
                 $widget->setAttribute('disabled', 'disabled');
             }
         }
-        
+
         $this->setWidgets($widgets);
         $this->setValidators($validators);
-        
+
         $this->widgetSchema->setNameFormat('addCandidate[%s]');
         $this->widgetSchema['appliedDate']->setAttribute();
         $this->setDefault('appliedDate', set_datepicker_date_format(date('Y-m-d')));
@@ -189,6 +191,7 @@ class AddCandidateForm extends BaseForm {
         $this->attachment = $candidate->getJobCandidateAttachment();
         $this->setDefault('keyWords', $candidate->getKeywords());
         $this->setDefault('comment', $candidate->getComment());
+        $this->setDefault('notes', $candidate->getNotes());
         $this->setDefault('appliedDate', set_datepicker_date_format($candidate->getDateOfApplication()));
         $candidateVacancyList = $candidate->getJobCandidateVacancy();
         $defaultVacancy = ($candidateVacancyList[0]->getVacancyId() == "") ? "" : $candidateVacancyList[0]->getVacancyId();
@@ -199,7 +202,7 @@ class AddCandidateForm extends BaseForm {
         $list = array("" => "-- " . __('Select') . " --");
         $vacancyProperties = array('name', 'id', 'hiringManagerId');
         $activeVacancyList = $this->getVacancyService()->getVacancyPropertyList($vacancyProperties, JobVacancy::ACTIVE);
-        
+
         $predefined = sfContext::getInstance()->getUser()->getAttribute('auth.userRole.predefined');
         foreach ($activeVacancyList as $vacancy) {
             $vacancyId = $vacancy['id'];
@@ -329,7 +332,7 @@ class AddCandidateForm extends BaseForm {
      * @param <type> $file
      * @param <type> $resume
      * @param <type> $candidateId
-     * @return <type> 
+     * @return <type>
      */
     private function _saveResume($file, $resume, $candidateId) {
 
@@ -357,6 +360,7 @@ class AddCandidateForm extends BaseForm {
         $candidate->lastName = trim($this->getValue('lastName'));
         $candidate->email = $this->getValue('email');
         $candidate->comment = $this->getValue('comment');
+        $candidate->notes = $this->getValue('notes');
         $candidate->contactNumber = $this->getValue('contactNo');
         $candidate->keywords = $this->getValue('keyWords');
         $candidate->addedPerson = $this->addedBy;
@@ -396,13 +400,13 @@ class AddCandidateForm extends BaseForm {
             $candidateVacancy = new JobCandidateVacancy();
             $candidateVacancy->candidateId = $candidateId;
             $candidateVacancy->vacancyId = $vacnacy;
-            
+
             // Get correct status for candidate vacancy
             $userRoleManager = UserRoleManagerFactory::getUserRoleManager();
             $workflowItems = $userRoleManager->getAllowedActions(WorkflowStateMachine::FLOW_RECRUITMENT, 'INITIAL');
-            
+
             if (isset($workflowItems[WorkflowStateMachine::RECRUITMENT_APPLICATION_ACTION_ATTACH_VACANCY])) {
-                
+
                 $workflowItem = $workflowItems[WorkflowStateMachine::RECRUITMENT_APPLICATION_ACTION_ATTACH_VACANCY];
                 $candidateVacancy->status = $workflowItem->getResultingState();
                 if ($this->getValue('appliedDate') == "") {
@@ -456,4 +460,3 @@ class AddCandidateForm extends BaseForm {
     }
 
 }
-

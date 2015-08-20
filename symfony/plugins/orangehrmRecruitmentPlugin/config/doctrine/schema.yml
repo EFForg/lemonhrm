@@ -36,7 +36,7 @@ JobVacancy:
       type: one
       foreignType: many
       foreignAlias: managedVacancies
-      
+
     JobCandidateVacancy:
       local: id
       foreign: vacancyId
@@ -71,6 +71,7 @@ JobCandidate:
       type: string(30)
     status: integer(4)
     comment: string(2147483647)
+    notes: string(2147483647)
     mode_of_application:
       name: mode_of_application as modeOfApplication
       type: integer(4)

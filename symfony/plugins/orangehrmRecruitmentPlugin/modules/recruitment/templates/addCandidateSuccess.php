@@ -48,7 +48,7 @@ foreach ($jobVacancyList as $vacancy) {
 .actionDrpDown {
     width: 170px;
     margin:1px 10px 0 10px;
-}    
+}
 </style>
 <?php if($candidatePermissions->canRead()){?>
 <div class="box" id="addCandidate">
@@ -77,7 +77,7 @@ foreach ($jobVacancyList as $vacancy) {
                                 <div class="fieldDescription"><em>*</em> <?php echo __('Last Name'); ?></div>
                                 <?php echo $form['lastName']->render(array("class" => "formInputText", "maxlength" => 35)); ?>
                             </li>
-                        </ol>                        
+                        </ol>
 
                     </li>
 
@@ -108,7 +108,7 @@ foreach ($jobVacancyList as $vacancy) {
                                     <?php
                                     $widgetName = $candidateVacancy->getId();
                                     echo $actionForm[$widgetName]->render(array("class" => "actionDrpDown"));
-                                    ?> 
+                                    ?>
                                 <span class="status" style="font-weight: bold"><?php echo __("Status") . ": " . __(ucwords(strtolower($candidateVacancy->getStatus()))); ?></span>
                                     <?php
                                 }
@@ -123,7 +123,7 @@ foreach ($jobVacancyList as $vacancy) {
 
                     <!-- Resume block : Begins -->
 
-                    <li>    
+                    <li>
 
                         <?php
                         if ($form->attachment == "") {
@@ -159,6 +159,10 @@ foreach ($jobVacancyList as $vacancy) {
                     <li>
                         <?php echo $form['comment']->renderLabel(__('Comment'), array("class " => "comment")); ?>
                         <?php echo $form['comment']->render(array("class" => "formInputText", "cols" => 35, "rows" => 4)); ?>
+                    </li>
+                    <li>
+                        <?php echo $form['notes']->renderLabel(__('Notes'), array("class " => "notes")); ?>
+                        <?php echo $form['notes']->render(array("class" => "formInputText", "cols" => 35, "rows" => 4)); ?>
                     </li>
                     <li>
                         <?php echo $form['appliedDate']->renderLabel(__('Date of Application'), array("class " => "appDate")); ?>

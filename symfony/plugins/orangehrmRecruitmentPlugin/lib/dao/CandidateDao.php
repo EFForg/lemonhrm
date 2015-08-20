@@ -58,10 +58,10 @@ class CandidateDao extends BaseDao {
             throw new DaoException($e->getMessage());
         }
     }
-    
+
     /**
      * Return an array of candidate names
-     * 
+     *
      * @version 2.7.1
      * @param Array $allowedCandidateIdList Allowed candidate Id List
      * @param Integer $status Cadidate Status
@@ -70,26 +70,26 @@ class CandidateDao extends BaseDao {
      */
     public function getCandidateNameList($allowedCandidateIdList, $status = JobCandidate::ACTIVE) {
         try {
-            
+
             if (!empty($allowedCandidateIdList)) {
-                
+
                 $escapeString = implode(',', array_fill(0, count($allowedCandidateIdList), '?'));
                 $pdo = Doctrine_Manager::connection()->getDbh();
                 $q = "SELECT jc.first_name AS firstName, jc.middle_name AS middleName, jc.last_name AS lastName, jc.id
                 		FROM ohrm_job_candidate jc
                 		WHERE jc.id IN ({$escapeString}) AND
                 		jc.status = ?";
-                
+
                 $escapeValueArray = array_values($allowedCandidateIdList);
                 $escapeValueArray[] = $status;
-                
-                $query = $pdo->prepare($q); 
+
+                $query = $pdo->prepare($q);
                 $query->execute($escapeValueArray);
                 $results = $query->fetchAll(PDO::FETCH_ASSOC);
             }
-            
+
             return $results;
-        
+
         // @codeCoverageIgnoreStart
         } catch (Exception $e) {
             throw new DaoException($e->getMessage(), $e->getCode(), $e);
@@ -232,7 +232,8 @@ class CandidateDao extends BaseDao {
                     ->set('email', '?', $candidate->email)
                     ->set('middleName', '?', $candidate->middleName)
                     ->set('dateOfApplication', '?', $candidate->dateOfApplication)
-                    ->set('comment', '?', $candidate->comment)
+                    ->set('coverLetter', '?', $candidate->coverLetter)
+                    ->set('notes', '?', $candidate->notes)
                     ->where('id = ?', $candidate->id);
 
             return $q->execute();
@@ -345,7 +346,7 @@ class CandidateDao extends BaseDao {
 
     /**
      * Return an array of Candidate History Ids based on user role
-     * 
+     *
      * @version 2.7.1
      * @param String $role User Role
      * @param Integer $empNumber Employee Number
@@ -461,7 +462,7 @@ class CandidateDao extends BaseDao {
 
         try {
             $pdo = Doctrine_Manager::connection()->getDbh();
-            
+
             $query = ($countQuery) ? "SELECT COUNT(*)" : "SELECT jc.id, jc.first_name, jc.middle_name, jc.last_name, jc.date_of_application, jcv.status, jv.name, e.emp_firstname, e.emp_middle_name, e.emp_lastname, e.termination_id, jv.status as vacancyStatus, jv.id as vacancyId, ca.id as attachmentId, jc.status as candidateStatus";
             $query .= "  FROM ohrm_job_candidate jc";
             $query .= " LEFT JOIN ohrm_job_candidate_vacancy jcv ON jc.id = jcv.candidate_id";
@@ -602,7 +603,7 @@ class CandidateDao extends BaseDao {
 
     /**
      * Add where clause to search by candidate name.
-     * 
+     *
      * @param type $where Where Clause
      * @param type $paramObject Search Parameter object
      */
