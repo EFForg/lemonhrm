@@ -12,7 +12,7 @@
  * @property string $email
  * @property string $contactNumber
  * @property integer $status
- * @property string $comment
+ * @property string $coverLetter
  * @property string $notes
  * @property integer $modeOfApplication
  * @property date $dateOfApplication
@@ -32,7 +32,7 @@
  * @method string                 getEmail()                  Returns the current record's "email" value
  * @method string                 getContactNumber()          Returns the current record's "contactNumber" value
  * @method integer                getStatus()                 Returns the current record's "status" value
- * @method string                 getCoverLetter()                Returns the current record's "coverLetter" value
+ * @method string                 getCoverLetter()            Returns the current record's "coverLetter" value
  * @method string                 getNotes()                  Returns the current record's "notes" value
  * @method integer                getModeOfApplication()      Returns the current record's "modeOfApplication" value
  * @method date                   getDateOfApplication()      Returns the current record's "dateOfApplication" value
@@ -51,7 +51,7 @@
  * @method JobCandidate           setEmail()                  Sets the current record's "email" value
  * @method JobCandidate           setContactNumber()          Sets the current record's "contactNumber" value
  * @method JobCandidate           setStatus()                 Sets the current record's "status" value
- * @method JobCandidate           setComment()                Sets the current record's "comment" value
+ * @method JobCandidate           setCoverLetter()            Sets the current record's "coverLetter" value
  * @method JobCandidate           setNotes()                  Sets the current record's "notes" value
  * @method JobCandidate           setModeOfApplication()      Sets the current record's "modeOfApplication" value
  * @method JobCandidate           setDateOfApplication()      Sets the current record's "dateOfApplication" value
@@ -103,7 +103,7 @@ abstract class BaseJobCandidate extends sfDoctrineRecord
              'type' => 'integer',
              'length' => 4,
              ));
-        $this->hasColumn('comment', 'string', 2147483647, array(
+        $this->hasColumn('cover_letter', 'string', 2147483647, array(
              'type' => 'string',
              'length' => 2147483647,
              ));

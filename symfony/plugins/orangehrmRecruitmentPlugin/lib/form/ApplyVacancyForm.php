@@ -23,7 +23,7 @@ class ApplyVacancyForm extends BaseForm {
     private $candidateService;
     private $recruitmentAttachmentService;
     private $workflowService;
-    
+
     public $attachment;
     public $candidateId;
     private $allowedFileTypes = array(
@@ -62,14 +62,14 @@ class ApplyVacancyForm extends BaseForm {
         }
         return $this->recruitmentAttachmentService;
     }
-    
+
     public function getWorkflowService() {
         if (is_null($this->workflowService)) {
-            $this->workflowService = new AccessFlowStateMachineService();        
+            $this->workflowService = new AccessFlowStateMachineService();
         }
         return $this->workflowService;
     }
-    
+
     public function configure() {
 
         $this->candidateId = $this->getOption('candidateId');
@@ -87,7 +87,7 @@ class ApplyVacancyForm extends BaseForm {
             'contactNo' => new sfWidgetFormInputText(),
             'resume' => new sfWidgetFormInputFileEditable(array('edit_mode' => false, 'with_delete' => false, 'file_src' => '')),
             'keyWords' => new sfWidgetFormInputText(),
-            'comment' => new sfWidgetFormTextArea(),
+            'coverLetter' => new sfWidgetFormTextArea(),
             'vacancyList' => new sfWidgetFormInputHidden(),
         ));
 
@@ -99,7 +99,7 @@ class ApplyVacancyForm extends BaseForm {
             'contactNo' => new sfValidatorString(array('required' => false, 'max_length' => 35, 'trim' => true)),
             'resume' => new sfValidatorFile(array('required' => true, 'max_size' => 1024000, 'validated_file_class' => 'orangehrmValidatedFile')),
             'keyWords' => new sfValidatorString(array('required' => false, 'max_length' => 255)),
-            'comment' => new sfValidatorString(array('required' => false)),
+            'coverLetter' => new sfValidatorString(array('required' => false)),
             'vacancyList' => new sfValidatorString(array('required' => false)),
         ));
 
@@ -114,7 +114,7 @@ class ApplyVacancyForm extends BaseForm {
             $this->setDefault('contactNo', $candidate->getContactNumber());
             $this->attachment = $candidate->getJobCandidateAttachment();
             $this->setDefault('keyWords', $candidate->getKeywords());
-            $this->setDefault('comment', $candidate->getComment());
+            $this->setDefault('coverLetter', $candidate->getCoverLetter());
             $candidateVacancyList = $candidate->getJobCandidateVacancy();
             $vacancyList = array();
             foreach ($candidateVacancyList as $candidateVacancy) {
@@ -156,7 +156,7 @@ class ApplyVacancyForm extends BaseForm {
         $candidate->middleName = $this->getValue('middleName');
         $candidate->lastName = $this->getValue('lastName');
         $candidate->email = $this->getValue('email');
-        $candidate->comment = $this->getValue('comment');
+        $candidate->coverLetter = $this->getValue('coverLetter');
         $candidate->contactNumber = $this->getValue('contactNo');
         $candidate->keywords = $this->getValue('keyWords');
         $date = date('Y-m-d');
@@ -174,7 +174,7 @@ class ApplyVacancyForm extends BaseForm {
     /**
      *
      * @param sfValidatedFile $file
-     * @return <type> 
+     * @return <type>
      */
     protected function isValidResume($file) {
 
@@ -205,7 +205,7 @@ class ApplyVacancyForm extends BaseForm {
     /**
      *
      * @param <type> $vacnacyId
-     * @param <type> $candidateId 
+     * @param <type> $candidateId
      */
     protected function _saveCandidateVacancies($vacnacyId, $candidateId) {
         if (!empty($vacnacyId)) {
@@ -231,19 +231,19 @@ class ApplyVacancyForm extends BaseForm {
      * Get the resulting state of a job application
      */
     protected function getResultingStateForJobApplication() {
-            
+
         $resultingState = NULL;
-        
+
         // Since job application is done by a non-logged in user, current workflow does not support configuring
         // this via the workflow state machine.
         // Therefore, we set the state to ADMIN workflow item for the INITIAL state.
-        $workFlowItems = $this->getWorkflowService()->getAllowedWorkflowItems(WorkflowStateMachine::FLOW_RECRUITMENT, 'INITIAL', 'ADMIN');     
+        $workFlowItems = $this->getWorkflowService()->getAllowedWorkflowItems(WorkflowStateMachine::FLOW_RECRUITMENT, 'INITIAL', 'ADMIN');
 
         if (count($workFlowItems) > 0) {
             $item = $workFlowItems[0];
             $resultingState = $item->getResultingState();
-        }        
-        
+        }
+
         if (is_null($resultingState)) {
             throw new RecruitmentExeption('No workflow items found for job vacancy INITIAL state for ADMIN');
         }

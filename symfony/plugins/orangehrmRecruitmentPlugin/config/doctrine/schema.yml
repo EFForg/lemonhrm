@@ -70,7 +70,7 @@ JobCandidate:
       name: contact_number as contactNumber
       type: string(30)
     status: integer(4)
-    comment: string(2147483647)
+    cover_letter: string(2147483647)
     notes: string(2147483647)
     mode_of_application:
       name: mode_of_application as modeOfApplication

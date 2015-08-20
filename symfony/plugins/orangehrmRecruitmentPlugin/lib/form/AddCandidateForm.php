@@ -135,7 +135,7 @@ class AddCandidateForm extends BaseForm {
                         'with_delete' => false,
                         'file_src' => '')),
             'keyWords' => new sfWidgetFormInputText(),
-            'comment' => new sfWidgetFormTextArea(),
+            'coverLetter' => new sfWidgetFormTextArea(),
             'notes' => new sfWidgetFormTextArea(),
             'appliedDate' => new ohrmWidgetDatePicker(array(), array('id' => 'addCandidate_appliedDate')),
             'vacancy' => new sfWidgetFormSelect(array('choices' => $vacancyList)),
@@ -153,7 +153,7 @@ class AddCandidateForm extends BaseForm {
             'resume' => new sfValidatorFile(array('required' => false, 'max_size' => 1024000,
                 'validated_file_class' => 'orangehrmValidatedFile')),
             'keyWords' => new sfValidatorString(array('required' => false, 'max_length' => 255)),
-            'comment' => new sfValidatorString(array('required' => false)),
+            'coverLetter' => new sfValidatorString(array('required' => false)),
             'notes' => new sfValidatorString(array('required' => false)),
             'appliedDate' => new ohrmDateValidator(array('date_format' => $inputDatePattern, 'required' => false),
                     array('invalid' => 'Date format should be ' . $inputDatePattern)),
@@ -190,7 +190,7 @@ class AddCandidateForm extends BaseForm {
         $this->setDefault('contactNo', $candidate->getContactNumber());
         $this->attachment = $candidate->getJobCandidateAttachment();
         $this->setDefault('keyWords', $candidate->getKeywords());
-        $this->setDefault('comment', $candidate->getComment());
+        $this->setDefault('coverLetter', $candidate->getCoverLetter());
         $this->setDefault('notes', $candidate->getNotes());
         $this->setDefault('appliedDate', set_datepicker_date_format($candidate->getDateOfApplication()));
         $candidateVacancyList = $candidate->getJobCandidateVacancy();
@@ -359,7 +359,7 @@ class AddCandidateForm extends BaseForm {
         $candidate->middleName = trim($this->getValue('middleName'));
         $candidate->lastName = trim($this->getValue('lastName'));
         $candidate->email = $this->getValue('email');
-        $candidate->comment = $this->getValue('comment');
+        $candidate->coverLetter = $this->getValue('coverLetter');
         $candidate->notes = $this->getValue('notes');
         $candidate->contactNumber = $this->getValue('contactNo');
         $candidate->keywords = $this->getValue('keyWords');

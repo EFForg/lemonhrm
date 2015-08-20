@@ -772,7 +772,7 @@ create table `ohrm_job_candidate`(
 	`email` varchar(100) not null,
 	`contact_number` varchar(30) default null,
 	`status` int(4) not null,
-	`comment` text default null,
+	`cover_letter` text default null,
 	`notes` text default null,
 	`mode_of_application` int(4) not null,
 	`date_of_application` date not null,

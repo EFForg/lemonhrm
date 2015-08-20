@@ -153,12 +153,12 @@ foreach ($jobVacancyList as $vacancy) {
                     <!-- Resume block : Ends -->
 
                     <li>
-                        <?php echo $form['keyWords']->renderLabel(__('Keywords'), array("class " => "keywrd")); ?>
-                        <?php echo $form['keyWords']->render(array("class" => "keyWords")); ?>
+                        <?php echo $form['coverLetter']->renderLabel(__('Cover Letter'), array("class " => "coverLetter")); ?>
+                        <?php echo $form['coverLetter']->render(array("class" => "formInputText", "cols" => 35, "rows" => 4)); ?>
                     </li>
                     <li>
-                        <?php echo $form['comment']->renderLabel(__('Comment'), array("class " => "comment")); ?>
-                        <?php echo $form['comment']->render(array("class" => "formInputText", "cols" => 35, "rows" => 4)); ?>
+                        <?php echo $form['keyWords']->renderLabel(__('Keywords'), array("class " => "keywrd")); ?>
+                        <?php echo $form['keyWords']->render(array("class" => "keyWords")); ?>
                     </li>
                     <li>
                         <?php echo $form['notes']->renderLabel(__('Notes'), array("class " => "notes")); ?>

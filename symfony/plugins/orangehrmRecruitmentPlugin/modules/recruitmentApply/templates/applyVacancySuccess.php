@@ -104,8 +104,8 @@
             </li>
 
             <li>
-                <?php echo $form['comment']->renderLabel(__('Cover letter'), array("class " => "comment")); ?>
-                <?php echo $form['comment']->render(array("class" => "formInputText","id" => "notes", "cols" => 43, "rows" => 4)); ?>
+                <?php echo $form['coverLetter']->renderLabel(__('Cover Letter'), array("class " => "coverLetter")); ?>
+                <?php echo $form['coverLetter']->render(array("class" => "formInputText","id" => "notes", "cols" => 43, "rows" => 4)); ?>
             </li>
 
             <?php include_component('core', 'ohrmPluginPannel', array('location' => 'add_layout_after_main_heading_3')) ?>
