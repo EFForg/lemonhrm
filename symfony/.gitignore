@@ -9,6 +9,7 @@ ache and logs (Symfony2)
 /var/logs/*
 !var/cache/.gitkeep
 !var/logs/.gitkeep
+/cache/*
 
 # Parameters
 /app/config/parameters.yml
