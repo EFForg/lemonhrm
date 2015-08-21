@@ -103,7 +103,7 @@ abstract class BaseJobCandidate extends sfDoctrineRecord
              'type' => 'integer',
              'length' => 4,
              ));
-        $this->hasColumn('cover_letter', 'string', 2147483647, array(
+        $this->hasColumn('cover_letter as coverLetter', 'string', 2147483647, array(
              'type' => 'string',
              'length' => 2147483647,
              ));
