@@ -18,6 +18,7 @@
  * Boston, MA  02110-1301, USA
  *
  */
+
 class applyVacancyAction extends sfAction {
 
     /**
@@ -32,7 +33,7 @@ class applyVacancyAction extends sfAction {
 
     /**
      *
-     * @return ApplyVacancyForm 
+     * @return ApplyVacancyForm
      */
     public function getForm() {
         return $this->form;
@@ -48,6 +49,13 @@ class applyVacancyAction extends sfAction {
             $this->vacancyService->setVacancyDao(new VacancyDao());
         }
         return $this->vacancyService;
+    }
+
+    public function getDispatcher() {
+        if(is_null($this->dispatcher)) {
+            $this->dispatcher = sfContext::getInstance()->getEventDispatcher();
+        }
+        return $this->dispatcher;
     }
 
     /**
@@ -96,6 +104,18 @@ class applyVacancyAction extends sfAction {
                         if (!empty($this->candidateId)) {
                             $this->getUser()->setFlash('applyVacancy.success', __('Application Received'));
                             $this->getUser()->setFlash('applyVacancy.warning', null);
+
+                            // Send a confirmation e-mail to the applicant.
+                            $logger = Logger::getLogger();
+                            $logger->info('Application recieved');
+
+                            // $workFlow = $this->getWorkflowItemForApplyAction($leaveAssignmentData);
+
+                            // $employee = $this->getLoggedInEmployee();
+                            // $eventData = array('request' => $leaveRequest, 'days' => $leaves, 'empNumber' => $employee->getEmpNumber(),
+                                // 'workFlow' => $workFlow);
+                            $eventData = array();
+                            $this->getDispatcher()->notify(new sfEvent($this, RecruitmentEvents::RECRUITMENT_APPLY, $eventData));
                         }
                     }
                 }
@@ -104,4 +124,3 @@ class applyVacancyAction extends sfAction {
     }
 
 }
-
