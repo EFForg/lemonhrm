@@ -50,43 +50,31 @@ class RecruitmentEmailProcessor implements orangehrmMailProcessor {
         $this->employeeService = $employeeService;
     }
 
+    public function getCandidateService() {
+        if (!($this->candidateService instanceof CandidateService)) {
+            $this->candidateService = new CandidateService();
+        }
+        return $this->candidateService;
+    }
+
+    public function setCandidateService($candidateService) {
+        $this->candidateService = $employeeService;
+    }
+
     public function getReplacements($data) {
-
+        
         $replacements = array();
+        
+        // Candidate data
+        $candidate = $this->getCandidateService()->getCandidateById($data['candidateId']);
+        $candidateFullName = $candidate->getFirstName() . ' ' . $candidate->getLastName();
+        $replacements['candidateFullName'] = $candidateFullName;
+        
+        // Vacancy data
+        $vacancyName = $data['vacancy']->getName();
+        $replacements['vacancyName'] = $vacancyName;
 
-        // $performer = $this->getEmployeeService()->getEmployee($data['empNumber']);
-        // 
-        // if ($performer instanceof Employee) {
-        //     $replacements['performerFirstName'] = $performer->getFirstName();
-        //     $replacements['performerFullName'] = $performer->getFullName();
-        // } else {
-        //     $name = sfContext::getInstance()->getUser()->getAttribute('auth.firstName');
-        // 
-        //     $replacements['performerFirstName'] = $name;
-        //     $replacements['performerFullName'] = $name;
-        // 
-        // }
-        // 
-        // if ($data['recipient'] instanceof Employee) {
-        //     $replacements['recipientFirstName'] = $data['recipient']->getFirstName();
-        //     $replacements['recipientFullName'] = $data['recipient']->getFullName();
-        // } else if ($data['recipient'] instanceof EmailSubscriber) {
-        //     $replacements['recipientFirstName'] = $data['recipient']->getName();
-        //     $replacements['recipientFullName'] = $data['recipient']->getName();
-        // }
-        // 
-        // $applicantNo = $data['days'][0]->getEmpNumber();
-        // 
-        // $applicant = $this->getEmployeeService()->getEmployee($applicantNo);
-        // if ($applicant instanceof Employee) {
-        //     $replacements['applicantFirstName'] = $applicant->getFirstName();
-        //     $replacements['applicantFullName'] = $applicant->getFullName();
-        // }
-        // 
-        // $replacements = $this->_populateLeaveReplacements($data, $replacements);
-        // 
-        // return $replacements;
-
+        return $replacements;
     }
 
     public function getRecipients($emailName, $role, $data) {

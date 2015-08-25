@@ -1,1 +1,3 @@
-Hello world - body.
+%candidateFullName% applied for the position of %vacancyName%. Log in to OrangeHRM to see all applications.
+
+This is an automated notification.
