@@ -410,7 +410,8 @@ class SchemaIncrementTask55 extends SchemaIncrementTask {
             (2, 'leave.assign'),
             (4, 'leave.cancel'),
             (6, 'leave.change'),
-            (5, 'leave.reject');";
+            (5, 'leave.reject'),
+            (7, 'recruitment.apply');";
 
         $sql[] = "INSERT INTO `ohrm_email_processor` (`id`, `email_id`, `class_name`) VALUES
             (1, 1, 'LeaveEmailProcessor'),
@@ -418,7 +419,8 @@ class SchemaIncrementTask55 extends SchemaIncrementTask {
             (3, 3, 'LeaveEmailProcessor'),
             (4, 4, 'LeaveEmailProcessor'),
             (5, 5, 'LeaveEmailProcessor'),
-            (6, 6, 'LeaveChangeMailProcessor');";
+            (6, 6, 'LeaveChangeMailProcessor'),
+            (7, 7, 'RecruitmentEmailProcessor');";
 
         $sql[] = "INSERT INTO `ohrm_email_template` (`id`, `email_id`, `locale`, `performer_role`, `recipient_role`, `subject`, `body`) VALUES
         (1, 1, 'en_US', NULL, 'supervisor', 'orangehrmLeavePlugin/modules/leave/templates/mail/en_US/apply/leaveApplicationSubject.txt', 'orangehrmLeavePlugin/modules/leave/templates/mail/en_US/apply/leaveApplicationBody.txt'),
@@ -435,7 +437,8 @@ class SchemaIncrementTask55 extends SchemaIncrementTask {
         (12, 5, 'en_US', NULL, 'ess', 'orangehrmLeavePlugin/modules/leave/templates/mail/en_US/reject/leaveRejectionSubject.txt', 'orangehrmLeavePlugin/modules/leave/templates/mail/en_US/reject/leaveRejectionBody.txt'),
         (13, 5, 'en_US', NULL, 'subscriber', 'orangehrmLeavePlugin/modules/leave/templates/mail/en_US/reject/leaveRejectionSubscriberSubject.txt', 'orangehrmLeavePlugin/modules/leave/templates/mail/en_US/reject/leaveRejectionSubscriberBody.txt'),
         (14, 6, 'en_US', NULL, 'ess', 'orangehrmLeavePlugin/modules/leave/templates/mail/en_US/change/leaveChangeSubject.txt', 'orangehrmLeavePlugin/modules/leave/templates/mail/en_US/change/leaveChangeBody.txt'),
-        (15, 6, 'en_US', NULL, 'subscriber', 'orangehrmLeavePlugin/modules/leave/templates/mail/en_US/change/leaveChangeSubscriberSubject.txt', 'orangehrmLeavePlugin/modules/leave/templates/mail/en_US/change/leaveChangeSubscriberBody.txt');";
+        (15, 6, 'en_US', NULL, 'subscriber', 'orangehrmLeavePlugin/modules/leave/templates/mail/en_US/change/leaveChangeSubscriberSubject.txt', 'orangehrmLeavePlugin/modules/leave/templates/mail/en_US/change/leaveChangeSubscriberBody.txt'),
+        (16, 7, 'en_US', NULL, 'hiring_manager', 'orangehrmRecruitmentPlugin/modules/recruitmentApply/templates/mail/en_US/recruitmentApplyHiringManagerSubject.txt', 'orangehrmRecruitmentPlugin/modules/recruitmentApply/templates/mail/en_US/recruitmentApplyHiringManagerBody.txt'),
 
         $sql[] = "INSERT INTO `ohrm_leave_status` (`id`, `status`, `name`) VALUES
                     (1, -1, 'REJECTED'),
@@ -1596,4 +1599,3 @@ ORDER BY ohrm_leave.emp_number
         return $report;
     }
 }
-

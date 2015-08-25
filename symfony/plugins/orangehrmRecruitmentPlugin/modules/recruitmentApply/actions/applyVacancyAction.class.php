@@ -105,12 +105,11 @@ class applyVacancyAction extends sfAction {
                             $this->getUser()->setFlash('applyVacancy.success', __('Application Received'));
                             $this->getUser()->setFlash('applyVacancy.warning', null);
 
-                            // Send a confirmation e-mail to the applicant.
-                            $logger = Logger::getLogger();
+                            // Send a confirmation e-mail to the applicant and notification to the hiring manager.
+                            $logger = Logger::getLogger('recruitment.applyvacancy');
                             $logger->info('Application recieved');
 
-                            // $workFlow = $this->getWorkflowItemForApplyAction($leaveAssignmentData);
-
+                            // @TODO: Send recipient info to email handler.
                             // $employee = $this->getLoggedInEmployee();
                             // $eventData = array('request' => $leaveRequest, 'days' => $leaves, 'empNumber' => $employee->getEmpNumber(),
                                 // 'workFlow' => $workFlow);
