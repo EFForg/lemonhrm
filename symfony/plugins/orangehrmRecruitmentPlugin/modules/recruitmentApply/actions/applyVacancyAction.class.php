@@ -113,7 +113,8 @@ class applyVacancyAction extends sfAction {
                             // $employee = $this->getLoggedInEmployee();
                             // $eventData = array('request' => $leaveRequest, 'days' => $leaves, 'empNumber' => $employee->getEmpNumber(),
                                 // 'workFlow' => $workFlow);
-                            $eventData = array();
+                            
+                            $eventData = array('vacancy' => $vacancy, 'candidateId' => $this->candidateId);
                             $this->getDispatcher()->notify(new sfEvent($this, RecruitmentEvents::RECRUITMENT_APPLY, $eventData));
                         }
                     }
