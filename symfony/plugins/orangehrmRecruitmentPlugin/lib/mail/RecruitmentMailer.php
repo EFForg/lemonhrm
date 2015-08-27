@@ -49,7 +49,7 @@ class RecruitmentMailer implements ohrmObserver {
         $eventData = $event->getParameters();
 
         $emailType = 'recruitment.apply';
-        $recipientRole = array('hiring_manager');
+        $recipientRole = array('hiring_manager', 'candidate');
         $performerRole = null;
         $this->getEmailService()->sendEmailNotifications($emailType, $recipientRole, $eventData,
                 strtolower($performerRole));

@@ -80,18 +80,19 @@ class RecruitmentEmailProcessor implements orangehrmMailProcessor {
     public function getRecipients($emailName, $role, $data) {
 
         $recipients = array();
-
+        
         switch ($role) {
             case 'hiring_manager' :
                 if (isset($data['vacancy'])) {
                     $recipients = array($this->getHiringManager($data['vacancy']));
                 }
                 break;
-            // case 'supervisor':
-            //     if (isset($data['days'][0])) {
-            //         $recipients = $this->getSupervisors($data['days'][0]->getEmpNumber(), $data);
-            //     }
-            //     break;
+            case 'candidate':
+                if (isset($data['candidateId'])) {
+                    $candidate = $this->getCandidateService()->getCandidateById($data['candidateId']);
+                    $recipients = array($candidate);
+                }
+                break;
         }
 
         return $recipients;

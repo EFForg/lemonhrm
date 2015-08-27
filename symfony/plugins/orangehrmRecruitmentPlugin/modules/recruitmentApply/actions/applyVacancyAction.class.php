@@ -109,11 +109,6 @@ class applyVacancyAction extends sfAction {
                             $logger = Logger::getLogger('recruitment.applyvacancy');
                             $logger->info('Application recieved');
 
-                            // @TODO: Send recipient info to email handler.
-                            // $employee = $this->getLoggedInEmployee();
-                            // $eventData = array('request' => $leaveRequest, 'days' => $leaves, 'empNumber' => $employee->getEmpNumber(),
-                                // 'workFlow' => $workFlow);
-                            
                             $eventData = array('vacancy' => $vacancy, 'candidateId' => $this->candidateId);
                             $this->getDispatcher()->notify(new sfEvent($this, RecruitmentEvents::RECRUITMENT_APPLY, $eventData));
                         }

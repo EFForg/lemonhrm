@@ -442,6 +442,8 @@ class EmailService extends BaseService {
                         $to = $recipient->getEmpWorkEmail();
                     } else if ($recipient instanceof EmailSubscriber) {
                         $to = $recipient->getEmail();
+                    } else if ($recipient instanceof JobCandidate) {
+                        $to = $recipient->getEmail();
                     }
                                                 
                     if (!empty($to)) {
@@ -510,7 +512,6 @@ class EmailService extends BaseService {
     }
 
     protected function replaceContent($template, $replacements, $wrapper = '%') {
-
         $keys = array_keys($replacements);
 
         foreach ($keys as $value) {
