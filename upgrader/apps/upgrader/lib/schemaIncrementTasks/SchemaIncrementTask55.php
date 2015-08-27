@@ -439,6 +439,7 @@ class SchemaIncrementTask55 extends SchemaIncrementTask {
         (14, 6, 'en_US', NULL, 'ess', 'orangehrmLeavePlugin/modules/leave/templates/mail/en_US/change/leaveChangeSubject.txt', 'orangehrmLeavePlugin/modules/leave/templates/mail/en_US/change/leaveChangeBody.txt'),
         (15, 6, 'en_US', NULL, 'subscriber', 'orangehrmLeavePlugin/modules/leave/templates/mail/en_US/change/leaveChangeSubscriberSubject.txt', 'orangehrmLeavePlugin/modules/leave/templates/mail/en_US/change/leaveChangeSubscriberBody.txt'),
         (16, 7, 'en_US', NULL, 'hiring_manager', 'orangehrmRecruitmentPlugin/modules/recruitmentApply/templates/mail/en_US/recruitmentApplyHiringManagerSubject.txt', 'orangehrmRecruitmentPlugin/modules/recruitmentApply/templates/mail/en_US/recruitmentApplyHiringManagerBody.txt'),
+        (16, 7, 'en_US', NULL, 'candidate', 'orangehrmRecruitmentPlugin/modules/recruitmentApply/templates/mail/en_US/recruitmentApplyCandidateSubject.txt', 'orangehrmRecruitmentPlugin/modules/recruitmentApply/templates/mail/en_US/recruitmentApplyCandidateBody.txt');";
 
         $sql[] = "INSERT INTO `ohrm_leave_status` (`id`, `status`, `name`) VALUES
                     (1, -1, 'REJECTED'),
