@@ -1,0 +1,16 @@
+# Ignore cache
+/symfony/cache/*
+
+# Ignore log files
+/symfony/log/*
+
+# Ignore web file uploads
+/symfony/web/uploads/*
+
+# Ignore configuration files
+apc.php
+/build/myconf.php
+/installer/log.txt
+/lib/confs/Conf.php
+/lib/confs/cryptokeys/key.ohrm
+/symfony/config/databases.yml
