@@ -1,3 +1,24 @@
+# Lemon HRM
+
+Lemon HRM is a fork of the Orange HRM open source human resource management tool. You can view the original Orange HRM Readme below. Lemon HRM adds the following features.
+
+## Automated recruitment notifications
+
+When a candidate applies for a job vacancy, Lemon HRM sends e-mail notifications:
+1. to candidate, confirming receipt of their application.
+2. to the hiring manager, letting them know there's a nice application.
+
+The templates for these e-mails can be found in `symfony/plugins/orangehrmRecruitmentPlugin/modules/recruitmentApply/templates/mail/`.
+
+## Cover letter and notes field for job candidates
+
+Lemon HRM adds a "Cover Letter" field to job applications and candidate views. It also adds a "Notes" field to internal-only candidate views.
+
+## Database changes
+
+Some database changes are required for the functionality above. The have been added to the update script in `upgrader/apps/upgrader/lib/schemaIncrementTasks/SchemaIncrementTask55.php`.
+
+--- Original OHRM README ---
 
 OrangeHRM is a comprehensive Human Resource Management (HRM) System that captures 
 all the essential functionalities required for any enterprise. 
