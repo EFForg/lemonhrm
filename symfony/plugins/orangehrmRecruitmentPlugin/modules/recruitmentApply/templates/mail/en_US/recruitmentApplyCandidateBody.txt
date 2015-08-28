@@ -1,11 +1,2 @@
-Thank you for submitting your application to EFF for the position of
-%vacancyName%.
-
-We will notify you if we require any additional information. We may take
-up to 3 weeks to get back to you if our team is responding to the bat
-signal for civil liberties online.
-
-Thank you for your patience, and we'll look forward to speaking with you
-soon.
-
-Thanks!
+Thank you for submitting your application for the position of %vacancyName%. 
+This is an automated confirmation that we've received your application. 

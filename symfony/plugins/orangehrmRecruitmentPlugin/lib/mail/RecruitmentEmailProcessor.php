@@ -100,23 +100,10 @@ class RecruitmentEmailProcessor implements orangehrmMailProcessor {
     
     protected function getHiringManager($vacancy) {
         $hiringManagerId = $vacancy->getHiringManagerId();
-        if ($hiringManagerId) {
+        if (!empty($hiringManagerId)) {
             $hiringManager = $this->getEmployeeService()->getEmployee($hiringManagerId);
         }
         return $hiringManager;
-    }
-
-    protected function getSelf($empNumber) {
-        $recipients = array();
-        $performer = $this->getEmployeeService()->getEmployee($empNumber);
-
-        $to = $performer->getEmpWorkEmail();
-
-        if (!empty($to)) {
-            $recipients[] = $performer;
-        }
-
-        return $recipients;
     }
 
 }

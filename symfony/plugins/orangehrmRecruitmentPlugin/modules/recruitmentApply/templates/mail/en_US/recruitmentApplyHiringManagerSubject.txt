@@ -1,1 +1,1 @@
-[HR-bot] %candidateFullName% applied for the position of %vacancyName%
+%candidateFullName% applied for the position of %vacancyName%
