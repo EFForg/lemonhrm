@@ -79,7 +79,7 @@ textarea {
 	text-decoration:underline;
 }
 #help {
-	color:#C70300;
+	color:#f28c38;
 	background: url(../images/help-down.png) no-repeat center right;
 	padding:2px 15px 1px 1px;
 	text-decoration:none;
@@ -160,8 +160,7 @@ textarea {
 	display:block;
 	background:transparent;
 	padding:0 10px 0 0;
-	font-weight:bold;
-	text-transform:uppercase;
+	font-weight:normal;
 	-moz-border-radius-topleft: 3px;
 	-webkit-border-top-left-radius: 3px;
 	 border-top-left-radius: 3px;
@@ -212,8 +211,6 @@ textarea {
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 	margin-right:5px;
-	font-weight:bold;
-	text-transform:uppercase;
 }
 .menu > ul > li.current > ul > li > a {
 	display:block;
@@ -226,8 +223,6 @@ textarea {
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 	margin-right:5px;
-	font-weight:bold;
-	text-transform:uppercase;
 }
 .menu > ul > li > ul > li > a.arrow {
 	padding: 0 20px 0 10px;
@@ -294,30 +289,30 @@ textarea {
 	color:#fff;
 }
 .menu > ul > li.current > a {
-	background:#C70300;
+	background:#f28c38;
 	color:#fff;
 }
 .menu > ul > li.current > a b {
-	background:#C70300;
+	background:#f28c38;
 }
 .menu > ul > li.current > ul {
 	left:0;
 	opacity:1;
 }
 .menu > ul:hover > li.current > a {
-	background:#C70300;
+	background:#f28c38;
 }
 .menu > ul:hover > li.current > a b {
-	background:#C70300;
+	background:#f28c38;
 }
 .menu > ul:hover > li.current > ul {
 	left:-9999px;
 }
 .menu > ul:hover > li.current:hover > a {
-	background:#C70300
+	background:#f28c38;
 }
 .menu > ul:hover > li.current:hover > a b {
-	background:#C70300;
+	background:#f28c38;
 }
 .menu > ul:hover > li.current:hover > ul {
 	left:0;
@@ -939,7 +934,7 @@ table.table {
     border-collapse:collapse;    
 }
 table.table th {
-	background:#C70300;
+	background:#f28c38;
 	color:#fff;
 	padding:7px;
 	border:1px solid #fff;
@@ -950,15 +945,7 @@ table.table th a {
         text-decoration: none;
         display: inline-block;
         width: 100%;
-	text-transform:uppercase;
-	font-weight:bold;
 }
-
-table.table .headerCell {
-	text-transform:uppercase;
-	font-weight:bold;
-}
-
 table.table th.center, table.table td.center {
 	text-align:center;
 }
@@ -1323,7 +1310,7 @@ ul.error_list li { /* For Symfony form errors. Used in PIM Define Reports */
 
 .modal-header {
   padding: 12px 15px;
-  background-color:#C70300;
+  background-color:#f28c38;
   -moz-border-radius-topleft: 4px;
 -webkit-border-top-left-radius: 4px;
  border-top-left-radius: 4px;
@@ -1568,7 +1555,7 @@ div#timesheet table.table tbody tr td.comments, div#edit-timesheet table.table t
 #sidebar #sidenav {
 	margin:19px 0 0 0;
 	padding:7px;
-	background: #C70300 url(../images/sidebar-nav-bg.png) repeat-y top right;
+	background: #f28c38 url(../images/sidebar-nav-bg.png) repeat-y top right;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
@@ -1583,16 +1570,14 @@ div#timesheet table.table tbody tr td.comments, div#edit-timesheet table.table t
 	width:174px;
 	text-decoration:none;
 	margin-bottom:5px;
-	border-bottom:1px solid #C70300;
-	font-weight:bold;
-	text-transform:uppercase;
+	border-bottom:1px solid #f19a52;
 }
 #sidebar #sidenav a:hover {
 	background-color:#ce6d1d;
 }
 
 #sidebar #sidenav a.disabled {
-    background-color: #ce6d1d;
+    background-color: #CE6D1D;
 }
 
 #sidebar #sidenav .selected a {
