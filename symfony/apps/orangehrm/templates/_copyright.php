@@ -1,8 +1,7 @@
 <?php 
-$version = '3.3';
-$prodName = 'OrangeHRM';
+$prodName = 'LemonHRM';
 $copyrightYear = date('Y');
 
 ?>
-<?php echo $prodName . ' ' . $version;?><br/>
+<?php echo $prodName;?><br/>
 

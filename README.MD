@@ -18,6 +18,11 @@ Lemon HRM adds a "Cover Letter" field to job applications and candidate views. I
 
 Some database changes are required for the functionality above. The have been added to the update script in `upgrader/apps/upgrader/lib/schemaIncrementTasks/SchemaIncrementTask55.php`.
 
+## Styling
+
+*Add your own logo to the top bar: Create `logo.png` in `webres_5523b60dca2e19.91394908/themes/default/images/`. The image should be 568 by 66 pixels.
+*Add your own logo to the login scren: Create `logo.png` in `webres_5523b60dca2e19.91394908/themes/default/images/login/`. 
+
 ## Legal notice
 
 By contributing code or other works of authorship to this project

@@ -11,7 +11,7 @@ include_slot('header', get_partial('global/header'));
         <div id="wrapper">
             
             <div id="branding">
-                <a href="https://hr.eff.org/symfony/web/index.php/directory/viewDirectory/reset/1" target="_blank"><img src="<?php echo theme_path('images/logo.png')?>" width="568" height="66" alt="EFF Employee Experience"/></a>
+                <a href="https://hr.eff.org/symfony/web/index.php/directory/viewDirectory/reset/1" target="_blank"><img src="<?php echo theme_path('images/logo.png')?>" width="568" height="66" alt="Human Resource Management"/></a>
                 <!--<a href="http://www.orangehrm.com/user-survey-registration.php" class="subscribe" target="_blank"><?php echo __('Join OrangeHRM Community'); ?></a>-->
                 <a href="#" id="welcome" class="panelTrigger"><?php echo __("Welcome %username%", array("%username%" => $sf_user->getAttribute('auth.firstName'))); ?></a>
                 <div id="welcome-menu" class="panelContainer">
