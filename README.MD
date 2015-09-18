@@ -18,6 +18,29 @@ Lemon HRM adds a "Cover Letter" field to job applications and candidate views. I
 
 Some database changes are required for the functionality above. The have been added to the update script in `upgrader/apps/upgrader/lib/schemaIncrementTasks/SchemaIncrementTask55.php`.
 
+## Legal notice
+
+By contributing code or other works of authorship to this project
+("Your Contributions"), you grant to the Electronic Frontier Foundation
+(EFF) a perpetual, worldwide, non-exclusive, no-charge, royalty-free,
+irrevocable license to reproduce, prepare derivative works of, publicly
+display, publicly perform, sublicense, and distribute Your Contributions
+and such derivative works under the terms of any free software or open
+source license or licenses, such license or licenses to be selected by
+EFF at its sole discretion, and to authorize others to perform the same
+acts under the terms of any such license or licenses.
+
+By contributing code or other works of authorship to this project, you 
+represent that you have the legal right and ability to grant this
+license.
+
+Except for the license granted herein to EFF and recipients of
+software distributed by EFF, You reserve all right, title,
+and interest in and to Your Contributions.
+
+If you do not agree to these terms, please do not commit any material
+to this repository.
+
 --- Original OHRM README ---
 
 OrangeHRM is a comprehensive Human Resource Management (HRM) System that captures 
