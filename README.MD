@@ -2,7 +2,7 @@
 
 Lemon HRM is a fork of the Orange HRM open source human resource management tool. You can view the original Orange HRM Readme below. Lemon HRM adds the following features.
 
-## Automated recruitment notifications
+### Automated recruitment notifications
 
 When a candidate applies for a job vacancy, Lemon HRM sends e-mail notifications:
 1. to candidate, confirming receipt of their application.
@@ -10,18 +10,18 @@ When a candidate applies for a job vacancy, Lemon HRM sends e-mail notifications
 
 The templates for these e-mails can be found in `symfony/plugins/orangehrmRecruitmentPlugin/modules/recruitmentApply/templates/mail/`.
 
-## Cover letter and notes field for job candidates
+### Cover letter and notes field for job candidates
 
 Lemon HRM adds a "Cover Letter" field to job applications and candidate views. It also adds a "Notes" field to internal-only candidate views.
 
-## Database changes
+### Database changes
 
 Some database changes are required for the functionality above. The have been added to the update script in `upgrader/apps/upgrader/lib/schemaIncrementTasks/SchemaIncrementTask55.php`.
 
-## Styling
+### Styling
 
-*Add your own logo to the top bar: Create `logo.png` in `webres_5523b60dca2e19.91394908/themes/default/images/`. The image should be 568 by 66 pixels.
-*Add your own logo to the login scren: Create `logo.png` in `webres_5523b60dca2e19.91394908/themes/default/images/login/`. 
+* Add your own logo to the top bar: Create `logo.png` in `webres_5523b60dca2e19.91394908/themes/default/images/`. The image should be 568 by 66 pixels.
+* Add your own logo to the login scren: Create `logo.png` in `webres_5523b60dca2e19.91394908/themes/default/images/login/`. 
 
 ## Legal notice
 
@@ -46,7 +46,7 @@ and interest in and to Your Contributions.
 If you do not agree to these terms, please do not commit any material
 to this repository.
 
---- Original OHRM README ---
+## Original OrangeHRM README
 
 OrangeHRM is a comprehensive Human Resource Management (HRM) System that captures 
 all the essential functionalities required for any enterprise. 
@@ -60,12 +60,11 @@ OrangeHRM is distributed in the hope that it will be useful, but WITHOUT ANY WAR
 without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
 See the GNU General Public License for more details.
 
-Installing
-----------
+### Installing
+
 1. Install OrangeHRM using the web installer
 
-Deprecated Notes
-----------------
+### Deprecated Notes
 
 The source that you have downloaded(ZIP archive) in which this was enclosed, is of the 
 directory structure as follows; ( since release of OrangeHRM version 0.1 we have altered 
